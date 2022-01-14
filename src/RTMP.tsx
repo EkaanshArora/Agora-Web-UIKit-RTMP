@@ -1,8 +1,7 @@
 import { MaxUidContext, MinUidContext, RtcContext } from 'agora-react-uikit';
 import { useContext, useEffect, useState } from 'react';
 
-const RTMPUrl =
-  '';
+const RTMPUrl = ''
 const W = 1280
 const H = 720
 
@@ -90,20 +89,17 @@ const RTMP = () => {
   }
 
   return (
-    <div style={container}>
       <div style={isBtnDisabled ? disabledBtn : btn} onClick={() => {
         if (!isBtnDisabled) {
           console.log(isStreaming)
           isStreaming ? rtmpOff() : rtmpOn()
         }
       }}>
-        {isBtnDisabled ? 'Working...' : isStreaming ? 'Stop Streaming' : 'Start Streaming'}
+        {isBtnDisabled ? 'Working...' : isStreaming ? 'Stop Streaming to CDN' : 'Start Streaming to CDN'}
       </div>
-    </div>
   )
 }
 
-const container = {display: 'flex', flex: 1, alignContent: 'center', alignItems: 'center', marginBottom: 10}
 const btn = { backgroundColor: '#007bff', cursor: 'pointer', borderRadius: 5, padding: 5, color: '#ffffff', fontSize: 20, margin: 'auto',  paddingLeft: 10, paddingRight: 10}
 const disabledBtn = { backgroundColor: '#007bff55', borderRadius: 5, padding: 5, color: '#ffffff', fontSize: 20, margin: 'auto', paddingLeft: 20, paddingRight: 20}
 

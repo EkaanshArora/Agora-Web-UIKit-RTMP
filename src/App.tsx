@@ -56,23 +56,26 @@ const App: React.FunctionComponent = () => {
   )
 }
 
+const VideocallUI = () => {
+  const { rtcProps } = useContext(PropsContext)
+  return (
+    <RtcConfigure callActive={rtcProps.callActive}>
+      <div style={styles.containerInner}>
+        <RTMP />
+      </div>
+      {rtcProps?.layout === layout.grid ? <GridVideo /> : <PinnedVideo />}
+      <LocalControls />
+    </RtcConfigure>
+  )
+}
+
 const styles = {
   container: { width: '100vw', height: '100vh', display: 'flex', flex: 1, backgroundColor: '#007bff22' },
   heading: { textAlign: 'center' as const, marginBottom: 0 },
   videoContainer: { display: 'flex', flexDirection: 'column', flex: 1 } as React.CSSProperties,
   nav: { display: 'flex', justifyContent: 'space-around' },
   btn: { backgroundColor: '#007bff', cursor: 'pointer', borderRadius: 5, padding: 5, color: '#ffffff', fontSize: 20 },
-}
-
-const VideocallUI = () => {
-  const { rtcProps } = useContext(PropsContext)
-  return (
-    <RtcConfigure callActive={rtcProps.callActive}>
-      <RTMP />
-      {rtcProps?.layout === layout.grid ? <GridVideo /> : <PinnedVideo />}
-      <LocalControls />
-    </RtcConfigure>
-  )
+  containerInner: {display: 'flex', flex: 1, alignContent: 'center', alignItems: 'center', marginBottom: 10}
 }
 
 export default App
