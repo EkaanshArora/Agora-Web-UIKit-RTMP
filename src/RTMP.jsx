@@ -19,14 +19,12 @@ const RTMP = () => {
     client.on('live-streaming-warning', (e) =>
       console.log('live-streaming-warning', e),
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (isStreaming) {
       transcode();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isStreaming, max, min]);
 
   const transcode = async () => {
@@ -36,9 +34,9 @@ const RTMP = () => {
     let cols = Math.ceil(N / rows);
     let uids = users.map((u) => {
       if (u.uid === 0 && localUid) {
-        return localUid as number;
+        return localUid;
       } else {
-        return u.uid as number;
+        return u.uid;
       }
     });
     let userData = uids.map((u, i) => {
